@@ -1,0 +1,42 @@
+﻿<!-- Views/Weather/Display.cshtml -->
+@model Address
+
+@{
+    ViewData["Title"] = "Weather Display";
+}
+
+<h2>Weather Display</h2>
+
+<form method="get" asp-controller="Weather" asp-action="DisplayGeoCodes">
+    <label for="address.Street">Street:</label>
+    <input type="text" name="address.Street" id="address.Street" required />
+
+    <label for="address.City">City:</label>
+    <input type="text" name="address.City" id="address.City" required />
+
+    <label for="address.State">State:</label>
+    <input type="text" name="address.State" id="address.State" required />
+
+    <button type="submit">Submit</button>
+</form>
+
+@if (ViewBag.WeatherData != null)
+{
+    <h3>Weather Information:</h3>
+    <p>@ViewBag.WeatherData</p>
+}
+
+<div id="react-greeting-container"></div>
+
+<!-- Include React scripts and React component script -->
+<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script>
+    // React component that says "hi"
+    const GreetingComponent = () => {
+        return <p>Hi from React!</p>;
+    };
+
+    // Render the React component into the specified container
+    ReactDOM.render(<GreetingComponent />, document.getElementById('react-greeting-container'));
+</script>
