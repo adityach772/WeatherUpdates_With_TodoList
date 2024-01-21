@@ -18,7 +18,7 @@ public class GeoCodingService
         try
         {
             string encodedAddress = WebUtility.UrlEncode($"{address.Street} {address.City} {address.State}");
-            string api_key = _configuration.GetValue<string>("MyKeys:Maps_API_URL");
+            string api_key = _configuration.GetValue<string>("MyKeys:Maps_API_Key");
             var apiUrl = $"https://maps.googleapis.com/maps/api/geocode/json?address={encodedAddress}&key={api_key}";
 
             using (var httpClient = _httpClientFactory.CreateClient())
