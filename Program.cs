@@ -19,6 +19,8 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<GeoCodingService>();
 
+builder.Services.AddScoped<WeatherService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

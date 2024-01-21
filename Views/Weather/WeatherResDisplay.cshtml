@@ -1,0 +1,53 @@
+﻿@model List<WeatherResDisplay>
+
+@{
+    ViewBag.Title = "GeoCode and Address Display";
+}
+
+<link href="~/css/weather-style.css" rel="stylesheet" type="text/css" />
+
+<div class="container">
+    <h2 class="section-title">Address and GeoCode Information</h2>
+
+    <div class="info-section">
+        <h3 class="info-title">Address</h3>
+        <p class="info-text">Street: @ViewBag.Address.Street</p>
+        <p class="info-text">City: @ViewBag.Address.City</p>
+        <p class="info-text">State: @ViewBag.Address.State</p>
+    </div>
+
+    <div class="info-section">
+        <h3 class="info-title">GeoCode</h3>
+        <p class="info-text">Latitude: @ViewBag.Latitude</p>
+        <p class="info-text">Longitude: @ViewBag.Longitude</p>
+    </div>
+
+    <h2 class="section-title">Weather Forecast</h2>
+    <table class="weather-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Temperature (°C)</th>
+                <th>Feels Like (°C)</th>
+                <th>Weather</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Date</td>
+                    <td>@item.Time</td>
+                    <td>@item.Temperature</td>
+                    <td>@item.FeelsLike</td>
+                    <td>@item.WeatherMain</td>
+                    <td>@item.WeatherDescription</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="javascript:history.back()" class="back-button">Go Back</a>
+</div>
